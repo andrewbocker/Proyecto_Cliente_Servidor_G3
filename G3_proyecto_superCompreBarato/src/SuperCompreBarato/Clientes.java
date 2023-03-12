@@ -8,7 +8,7 @@ package SuperCompreBarato;
  *
  * @author Minor
  */
-public class Clientes {
+public class Clientes extends Persona {
      int numOrden;
     String nombreProduc;
     
