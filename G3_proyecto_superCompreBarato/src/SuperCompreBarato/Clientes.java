@@ -6,8 +6,11 @@ package SuperCompreBarato;
 
 /**
  *
- * @author andre
+ * @author Minor
  */
 public class Clientes {
+     int numOrden;
+    String nombreProduc;
+    
     
 }
