@@ -4,10 +4,9 @@
  */
 package SuperCompreBarato;
 
-/**
- *
- * @author andre
- */
-public class Empleados {
+//autor minor
+public class Empleados extends Persona {
+     int aniosExperiencia;
+     String area,cargo;
     
 }
