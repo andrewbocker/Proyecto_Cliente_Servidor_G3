@@ -6,8 +6,11 @@ package SuperCompreBarato;
 
 /**
  *
- * @author andre
+ * @author minor
  */
-public class Persona {
+public class Persona extends Persona {
+    int aniosExperiencia;
+     String area,cargo;
+    
     
 }
