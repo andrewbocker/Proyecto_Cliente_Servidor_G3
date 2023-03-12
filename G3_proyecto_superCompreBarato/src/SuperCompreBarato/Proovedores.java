@@ -12,7 +12,6 @@ public class Proovedores {
     
     private String idProvedor;
     private String proveedor;
-    private ArrayList[] proveedores;
 
     public Proovedores() {
     }
