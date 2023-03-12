@@ -13,7 +13,7 @@ public class Productos {
     private String idProducto;
     private String descripción;
     private int precio;
-    private ArrayList[] inventario;
+    
 
     public Productos(String idProducto, String descripción, int precio) {
         this.idProducto = idProducto;
@@ -33,10 +33,6 @@ public class Productos {
         return precio;
     }
 
-    public ArrayList[] getInventario() {
-        return inventario;
-    }
-
     public void setIdProducto(String idProducto) {
         this.idProducto = idProducto;
     }
@@ -47,10 +43,6 @@ public class Productos {
 
     public void setPrecio(int precio) {
         this.precio = precio;
-    }
-
-    public void setInventario(ArrayList[] inventario) {
-        this.inventario = inventario;
     }
     
 }
