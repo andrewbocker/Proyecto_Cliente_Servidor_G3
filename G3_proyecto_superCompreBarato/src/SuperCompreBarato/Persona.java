@@ -8,7 +8,7 @@ package SuperCompreBarato;
  *
  * @author minor
  */
-public class Persona extends Persona {
+public class Persona {
     int aniosExperiencia;
      String area,cargo;
     
