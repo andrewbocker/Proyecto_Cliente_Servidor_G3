@@ -104,4 +104,12 @@ public class Inventario {
         System.out.println("No se Encontro ningun producto con el id = " + idProducto);
 
     }
+    
+    public void clearInventario() {
+        listInventario.clear();
+    }
+    
+    public boolean isInventarioEmpty() {
+        return listInventario.isEmpty();
+    }
 }
