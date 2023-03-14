@@ -10,16 +10,16 @@ public class Inventario {
 
     private ArrayList<Producto> listInventario = new ArrayList<>();
 
-    public void añadirProducto(String nombreProducto, String idProducto, String descripcion, int precio) {
+    public void añadirProducto(String nombreProducto, String idProducto, String descripcion, double precio, int stack) {
 
         // CREA UN NUEVO PRODUCTO Y LO AÑADE A LA LISTA
-        Producto producto = new Producto(nombreProducto, idProducto, descripcion, precio);
+        Producto producto = new Producto(nombreProducto, idProducto, descripcion, precio, stack);
         listInventario.add(producto);
         System.out.println("Se ha añadido correctamente el nuevo Producto");
 
     }
 
-    public void modificarProducto(String nombreProducto, String idProducto, String descripcion, int precio) {
+    public void modificarProducto(String nombreProducto, String idProducto, String descripcion, double precio, int stack) {
 
         // SE CREA UNA VARIABLE "index"  PARA SABER EN QUE POSICION DE LA LISTA NOS ENCONTRAMOS
         int index = 0;
@@ -36,6 +36,7 @@ public class Inventario {
                 listInventario.get(index).setNombreProducto(nombreProducto);
                 listInventario.get(index).setDescripción(descripcion);
                 listInventario.get(index).setPrecio(precio);
+                listInventario.get(index).setStack(stack);
 
                 System.out.println("El producto con el id = " + idProducto + " ha sido modificado correctamente");
 
