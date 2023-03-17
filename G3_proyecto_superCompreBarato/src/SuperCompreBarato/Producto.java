@@ -13,14 +13,16 @@ public class Producto {
     private String nombreProducto;
     private String idProducto;
     private String descripcion;
-    private int precio;
+    private double precio;
+    private int stack;
     
 
-    public Producto(String nombreProducto, String idProducto, String descripcion, int precio) {
+    public Producto(String nombreProducto, String idProducto, String descripcion, double precio, int stack) {
         this.nombreProducto = nombreProducto;
         this.idProducto = idProducto;
         this.descripcion = descripcion;
         this.precio = precio;
+        this.stack = stack;
     }
     
     public String getNombreProducto() {
@@ -39,7 +41,7 @@ public class Producto {
         return descripcion;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
@@ -51,8 +53,20 @@ public class Producto {
         this.descripcion = descripción;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
+    }
+    
+    public void setStack(int stack) {
+        this.stack = stack;
+    }
+    
+    public int getStack() {
+        return this.stack;
+    }
+    
+    public void restarStack() {
+        stack--;
     }
     
 }
