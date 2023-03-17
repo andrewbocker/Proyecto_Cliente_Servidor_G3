@@ -11,7 +11,7 @@ public class Empleado extends Persona {
     private String puestoTrabajo;
     private double salario;
 
-    public Empleado(String idEmpleado, String puestoTrabajo, double salario, String nombre, String apellido1, String apellido2, String cedula, int edad, String lugarResidencia) {
+    public Empleado(String nombre, String apellido1, String apellido2, String cedula, int edad, String lugarResidencia, String idEmpleado, String puestoTrabajo, double salario) {
         super(nombre, apellido1, apellido2, cedula, edad, lugarResidencia);
         this.idEmpleado = idEmpleado;
         this.puestoTrabajo = puestoTrabajo;
