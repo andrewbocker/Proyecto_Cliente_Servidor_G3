@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class Inventario {
 
-    private ArrayList<Producto> listInventario = new ArrayList<>();
+    private final ArrayList<Producto> listInventario = new ArrayList<>();
 
     public void añadirProducto(String nombreProducto, String idProducto, String descripcion, double precio, int stack) {
 
