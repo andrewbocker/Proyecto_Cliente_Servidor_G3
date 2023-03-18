@@ -15,18 +15,18 @@ public class ListaEmpleados {
         // VERIFICA PRIMERO SI EXISTE UN EMPLEADO EN LA LISTA CON EL MISMO ID
         if (buscarEmpleado(idEmpleado) != -1)
         {
-            
+
             // SI EXISTE UN EMPLEADO CON EL MISMO ID, AVISA AL USUARIO Y SALE DEL METODO
             System.out.println("No se puede añadir varios empleado con el mismo id");
             return;
-            
+
         }
-        
+
         // DE LO CONTRARIO, CREA UN NUEVO EMPLEADO Y LOS AÑADE A LA LISTA
         Empleado empleado = new Empleado(nombre, apellido1, apellido2, cedula, edad, lugarResidencia, idEmpleado, puestoTrabajo, salario);
         listEmpleados.add(empleado);
         System.out.println("Se ha añadido correctamente el nuevo empleado a la lista");
-        
+
     }
 
     private int buscarEmpleado(String idEmpleado) {
@@ -51,13 +51,14 @@ public class ListaEmpleados {
 
         // SI RETORNA -1 SIGNIFICA QUE NO SE ENCONTRO NINGUN PRODUCTO CON ESE ID
         return -1;
+        
     }
 
     public void modificarEmpleado(String nombre, String apellido1, String apellido2, String cedula, int edad, String lugarResidencia, String idEmpleado, String puestoTrabajo, double salario) {
 
         // BUSCA LA POSICION DEL OBJETO EN LA LISTA
         int index = buscarEmpleado(idEmpleado);
-        
+
         // MODIFIVA LOS DATOS DEL EMPLEADO EN LA LISTA
         listEmpleados.get(index).setNombre(nombre);
         listEmpleados.get(index).setApellido1(apellido1);
@@ -67,9 +68,9 @@ public class ListaEmpleados {
         listEmpleados.get(index).setLugarResidencia(lugarResidencia);
         listEmpleados.get(index).setPuestoTrabajo(puestoTrabajo);
         listEmpleados.get(index).setSalario(salario);
-        
+
         System.out.println("Los datos del Empleado " + listEmpleados.get(index).stringNombreCompleto() + " han sido modificados correctamente");
-        
+
     }
 
     public Empleado getEmpleado(String idEmpleado) {
