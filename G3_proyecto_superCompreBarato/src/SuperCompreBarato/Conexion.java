@@ -17,7 +17,6 @@ public class Conexion {
         {
             
             con = (Connection)DriverManager.getConnection(URL, USER, PASS);
-            JOptionPane.showMessageDialog(null, "La conexion fue exitosa");
 
         } catch (Exception e)
         {
