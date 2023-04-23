@@ -16,6 +16,7 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     public Menu() {
+        setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -32,7 +33,7 @@ public class Menu extends javax.swing.JFrame {
         titleLabel = new javax.swing.JLabel();
         optionsPanel = new javax.swing.JPanel();
         empleadosBT = new javax.swing.JButton();
-        clientesBT = new javax.swing.JButton();
+        btnClientes = new javax.swing.JButton();
         proveedoresBT = new javax.swing.JButton();
         productosBT = new javax.swing.JButton();
         ventasBT = new javax.swing.JButton();
@@ -54,8 +55,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        clientesBT.setText("Clientes");
-        clientesBT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClientes.setText("Clientes");
+        btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientesActionPerformed(evt);
+            }
+        });
 
         proveedoresBT.setText("Proveedores");
         proveedoresBT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -67,6 +73,11 @@ public class Menu extends javax.swing.JFrame {
         ventasBT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         salirBT.setText("Salir");
+        salirBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirBTActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout optionsPanelLayout = new javax.swing.GroupLayout(optionsPanel);
         optionsPanel.setLayout(optionsPanelLayout);
@@ -80,7 +91,7 @@ public class Menu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                         .addComponent(productosBT, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(optionsPanelLayout.createSequentialGroup()
-                        .addComponent(clientesBT, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ventasBT, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(optionsPanelLayout.createSequentialGroup()
@@ -98,7 +109,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(productosBT))
                 .addGap(27, 27, 27)
                 .addGroup(optionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clientesBT)
+                    .addComponent(btnClientes)
                     .addComponent(ventasBT))
                 .addGap(26, 26, 26)
                 .addGroup(optionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -150,6 +161,16 @@ public class Menu extends javax.swing.JFrame {
         nuevaPantallaEmpleados.setVisible(true);
     }//GEN-LAST:event_empleadosBTActionPerformed
 
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+        MenuClientes menuClientes = new MenuClientes();
+        menuClientes.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnClientesActionPerformed
+
+    private void salirBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirBTActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_salirBTActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -200,7 +221,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton clientesBT;
+    private javax.swing.JButton btnClientes;
     private javax.swing.JButton empleadosBT;
     private javax.swing.JPanel optionsPanel;
     private javax.swing.JPanel principalPanel;
