@@ -65,6 +65,11 @@ public class Menu extends javax.swing.JFrame {
 
         proveedoresBT.setText("Proveedores");
         proveedoresBT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        proveedoresBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                proveedoresBTActionPerformed(evt);
+            }
+        });
 
         productosBT.setText("Productos");
         productosBT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -170,6 +175,12 @@ public class Menu extends javax.swing.JFrame {
     private void salirBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirBTActionPerformed
         this.dispose();
     }//GEN-LAST:event_salirBTActionPerformed
+
+    private void proveedoresBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proveedoresBTActionPerformed
+        MenuProveedores menuProveedores = new MenuProveedores();
+        menuProveedores.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_proveedoresBTActionPerformed
 
     /**
      * @param args the command line arguments
