@@ -16,8 +16,8 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     public Menu() {
-        setLocationRelativeTo(null);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -73,9 +73,19 @@ public class Menu extends javax.swing.JFrame {
 
         productosBT.setText("Productos");
         productosBT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        productosBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productosBTActionPerformed(evt);
+            }
+        });
 
         ventasBT.setText("Ventas");
         ventasBT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ventasBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ventasBTActionPerformed(evt);
+            }
+        });
 
         salirBT.setText("Salir");
         salirBT.addActionListener(new java.awt.event.ActionListener() {
@@ -162,8 +172,9 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void empleadosBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empleadosBTActionPerformed
-        pantallaEmpleados nuevaPantallaEmpleados = new pantallaEmpleados();
+        PantallaEmpleados nuevaPantallaEmpleados = new PantallaEmpleados();
         nuevaPantallaEmpleados.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_empleadosBTActionPerformed
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
@@ -181,6 +192,18 @@ public class Menu extends javax.swing.JFrame {
         menuProveedores.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_proveedoresBTActionPerformed
+
+    private void productosBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productosBTActionPerformed
+        MenuProductos menuProductos = new MenuProductos();
+        menuProductos.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_productosBTActionPerformed
+
+    private void ventasBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventasBTActionPerformed
+        MenuVentas menuVentas = new MenuVentas();
+        menuVentas.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_ventasBTActionPerformed
 
     /**
      * @param args the command line arguments

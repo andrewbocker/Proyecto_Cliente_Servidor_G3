@@ -62,8 +62,8 @@ public class ModificarProveedor extends javax.swing.JFrame {
      * Creates new form pantallaEmpleados
      */
     public ModificarProveedor() {       
-        setLocationRelativeTo(null);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

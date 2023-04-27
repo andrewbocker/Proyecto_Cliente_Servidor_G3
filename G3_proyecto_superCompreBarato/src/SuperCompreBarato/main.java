@@ -4,7 +4,8 @@
  */
 package SuperCompreBarato;
 
-import Pantallas.Menu;
+import Pantallas.Login;
+
 
 /**
  *
@@ -16,8 +17,8 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Menu menu = new Menu();
-        menu.setVisible(true);
+        Login login = new Login();
+        login.setVisible(true);
     }
     
 }

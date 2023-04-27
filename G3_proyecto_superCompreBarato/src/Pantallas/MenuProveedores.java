@@ -18,8 +18,9 @@ public class MenuProveedores extends javax.swing.JFrame {
      * Creates new form pantallaEmpleados
      */
     public MenuProveedores() {
-        setLocationRelativeTo(null);
+        
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

@@ -140,8 +140,8 @@ public class Login extends javax.swing.JFrame {
         }else{
             if(usuario.equals("usuario")&& contrasena.equals("1234")){
                 JOptionPane.showMessageDialog(null,"Entrando al sistema"); 
-                InicioLoginMenu pcInicio=new InicioLoginMenu();
-                pcInicio.setVisible(true);
+                Menu menu =new Menu();
+                menu.setVisible(true);
                 this.dispose();
             }else{
                 JOptionPane.showMessageDialog(null,"Contraseña invalida");

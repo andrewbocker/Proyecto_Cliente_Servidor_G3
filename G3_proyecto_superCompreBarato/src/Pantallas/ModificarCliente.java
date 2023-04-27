@@ -70,8 +70,8 @@ public class ModificarCliente extends javax.swing.JFrame {
      * Creates new form pantallaEmpleados
      */
     public ModificarCliente() {       
-        setLocationRelativeTo(null);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
