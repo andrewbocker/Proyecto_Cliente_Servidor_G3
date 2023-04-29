@@ -219,7 +219,7 @@ public class BuscarVenta extends javax.swing.JFrame {
         Connection con = null;
         try{
             con = Conexion2.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM venta WHERE numero = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM venta WHERE numeroVenta = ?");
             ps.setString(1,txtNumeroVenta.getText());
             ResultSet rs = ps.executeQuery();
 
@@ -245,9 +245,9 @@ public class BuscarVenta extends javax.swing.JFrame {
         Connection con = null;
         try{
             con = Conexion2.getConnection();
-            PreparedStatement ps = con.prepareStatement("UPDATE venta SET numero = ?, monto = ?, "
+            PreparedStatement ps = con.prepareStatement("UPDATE venta SET numeroVenta = ?, monto = ?, "
                 + "productos = ?, metodoPago=?, idCliente =?,"
-                + "idEmpleado=?, fechaVenta = ? WHERE numero = ?");
+                + "idEmpleado=?, fechaVenta = ? WHERE numeroVenta = ?");
 
             ps.setString(8, txtNumeroVenta.getText());
             ps.setString(1, txtNumeroVenta.getText());
@@ -274,7 +274,7 @@ public class BuscarVenta extends javax.swing.JFrame {
         Connection con = null;
         try{
             con = Conexion2.getConnection();
-            PreparedStatement ps = con.prepareStatement("DELETE FROM venta WHERE numero =?");
+            PreparedStatement ps = con.prepareStatement("DELETE FROM venta WHERE numeroVenta =?");
             ps.setString(1, txtNumeroVenta.getText());
             if(ps.executeUpdate()>0){
                 JOptionPane.showMessageDialog(null, "Venta eliminada");

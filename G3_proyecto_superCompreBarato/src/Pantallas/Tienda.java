@@ -4,6 +4,7 @@
  */
 package Pantallas;
 
+import SuperCompreBarato.Conexion;
 import SuperCompreBarato.Conexion2;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -117,8 +118,8 @@ public class Tienda extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtIdEmpleado = new javax.swing.JTextField();
-        txtIdCliente = new javax.swing.JTextField();
+        txtCedEmpleado = new javax.swing.JTextField();
+        txtCedCliente = new javax.swing.JTextField();
         btnFinalizarVenta = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         txtFechaVenta = new javax.swing.JTextField();
@@ -153,6 +154,8 @@ public class Tienda extends javax.swing.JFrame {
         jlNombreCliente = new javax.swing.JLabel();
         jlNombreEmpleado = new javax.swing.JLabel();
         jlTipoCliente = new javax.swing.JLabel();
+        btnInfoCliente = new javax.swing.JButton();
+        btnInfoEmpleado = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -173,7 +176,7 @@ public class Tienda extends javax.swing.JFrame {
         jLabel1.setText("Tienda");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("ID Cliente");
+        jLabel2.setText("Ced. Cliente");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Fecha");
@@ -196,7 +199,7 @@ public class Tienda extends javax.swing.JFrame {
         jLabel11.setText("Productos ");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setText("ID Empleado");
+        jLabel12.setText("Ced. Empleado");
 
         jtCatalogoProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -299,6 +302,28 @@ public class Tienda extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel17.setText("Tipo Cliente");
 
+        jlNombreCliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jlNombreEmpleado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jlTipoCliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        btnInfoCliente.setBackground(new java.awt.Color(255, 204, 102));
+        btnInfoCliente.setText("OK");
+        btnInfoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInfoClienteActionPerformed(evt);
+            }
+        });
+
+        btnInfoEmpleado.setBackground(new java.awt.Color(255, 204, 102));
+        btnInfoEmpleado.setText("OK");
+        btnInfoEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInfoEmpleadoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -320,7 +345,7 @@ public class Tienda extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtPrecioProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(210, 211, Short.MAX_VALUE)
+                                        .addGap(210, 255, Short.MAX_VALUE)
                                         .addComponent(jLabel8))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3)
@@ -337,7 +362,7 @@ public class Tienda extends javax.swing.JFrame {
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtProductosAdquiridos, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                                 .addComponent(jLabel15)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtMontoFacturado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -364,25 +389,29 @@ public class Tienda extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel2)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(txtCedCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                                 .addComponent(jLabel12)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(36, 36, 36)
+                                                .addComponent(txtCedEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnInfoCliente)
+                                            .addComponent(btnInfoEmpleado))
+                                        .addGap(26, 26, 26)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel10)
-                                                .addGap(11, 11, 11)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jlNombreEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel9)
-                                                .addGap(34, 34, 34)
+                                                .addGap(18, 18, 18)
                                                 .addComponent(jlNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(42, 42, 42)
+                                        .addGap(36, 36, 36)
                                         .addComponent(jLabel17)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jlTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jlTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
@@ -408,21 +437,26 @@ public class Tienda extends javax.swing.JFrame {
                         .addComponent(jLabel4)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlNombreCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel9)
-                        .addComponent(jLabel17)
-                        .addComponent(jlTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlNombreEmpleado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel12)
-                        .addComponent(txtIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel10)))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlNombreCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)
+                                .addComponent(txtCedCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9)
+                                .addComponent(jLabel17)
+                                .addComponent(jlTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnInfoCliente)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(txtCedEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)
+                            .addComponent(btnInfoEmpleado)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jlNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(24, 24, 24)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -494,8 +528,8 @@ public class Tienda extends javax.swing.JFrame {
             ps.setString(1, txtMontoFacturado.getText());
             ps.setString(2, txtProductosAdquiridos.getText());
             ps.setString(3,cbMetodoPago.getSelectedItem().toString() );
-            ps.setString(4, txtIdCliente.getText());
-            ps.setString(5, txtIdEmpleado.getText());
+            ps.setString(4, txtCedCliente.getText());
+            ps.setString(5, txtCedEmpleado.getText());
             ps.setString(6, txtFechaVenta.getText());
             
             //Actualizar base de datos de productos
@@ -607,6 +641,63 @@ public class Tienda extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnInfoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoClienteActionPerformed
+        Connection con = null;
+        try
+        {  
+            con = Conexion.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM cliente WHERE cedula = ?");
+            ps.setString(1, txtCedCliente.getText());
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next())
+            {
+                jlNombreCliente.setText(rs.getString("nombre"));
+                jlTipoCliente.setText(rs.getString("tipoCliente"));
+                
+            
+            } else
+            {
+            
+                JOptionPane.showMessageDialog(null, "Esa cedula no esta registrada");
+            
+            }
+            
+            con.close();
+            
+        } catch (Exception e)
+        {
+            
+            JOptionPane.showMessageDialog(null, e);
+            
+        }
+        
+        
+    }//GEN-LAST:event_btnInfoClienteActionPerformed
+
+    private void btnInfoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoEmpleadoActionPerformed
+        Connection con = null;
+        try {
+            con = Conexion2.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM empleados "
+                    + "WHERE cedula=?");
+            ps.setString(1, txtCedEmpleado.getText());
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                jlNombreEmpleado.setText(rs.getString("nombre"));
+                                             
+            } else {
+                //el else cuando la cedula no coincida
+                JOptionPane.showMessageDialog(null, "Cedula no registrada:");
+            }
+            con.close();
+
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_btnInfoEmpleadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -650,6 +741,8 @@ public class Tienda extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminarProducto;
     private javax.swing.JButton btnFinalizarVenta;
+    private javax.swing.JButton btnInfoCliente;
+    private javax.swing.JButton btnInfoEmpleado;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnVer;
     private javax.swing.JComboBox<String> cbMetodoPago;
@@ -678,11 +771,11 @@ public class Tienda extends javax.swing.JFrame {
     private javax.swing.JTable jtCatalogoProductos;
     private javax.swing.JTable jtProductosSeleccionados;
     private javax.swing.JTextField txtCantidadProducto;
+    private javax.swing.JTextField txtCedCliente;
+    private javax.swing.JTextField txtCedEmpleado;
     private javax.swing.JTextField txtCodigoProducto;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtFechaVenta;
-    private javax.swing.JTextField txtIdCliente;
-    private javax.swing.JTextField txtIdEmpleado;
     private javax.swing.JTextField txtMontoFacturado;
     private javax.swing.JTextField txtNombreProducto;
     private javax.swing.JTextField txtPrecioProducto;

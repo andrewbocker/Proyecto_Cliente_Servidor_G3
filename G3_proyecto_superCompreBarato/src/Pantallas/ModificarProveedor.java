@@ -186,7 +186,7 @@ public class ModificarProveedor extends javax.swing.JFrame {
         {
             
             con = Conexion.getConnection();
-            PreparedStatement ps = con.prepareStatement("UPDATE proveedor SET nombre  = ? WHERE cedula = ?");
+            PreparedStatement ps = con.prepareStatement("UPDATE proveedor SET nombre  = ? WHERE nombre = ?");
             ps.setString(2, nombreProveedor);
             ps.setString(1, txtNombre.getText());
             
