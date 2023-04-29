@@ -4,7 +4,9 @@
  */
 package Pantallas;
 
+import SuperCompreBarato.Conexion;
 import javax.swing.JOptionPane;
+import java.sql.*;
 
 /**
  *
@@ -127,32 +129,54 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-              
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String usuario=jTextField1.getText();
-        String contrasena=jPasswordField1.getText();
-        
-        if(usuario.isEmpty()||contrasena.isEmpty()){
-            JOptionPane.showMessageDialog(null,"Algun campo esta vacio");
-            
-        }else{
-            if(usuario.equals("usuario")&& contrasena.equals("1234")){
-                JOptionPane.showMessageDialog(null,"Entrando al sistema"); 
-                Menu menu =new Menu();
-                menu.setVisible(true);
-                this.dispose();
-            }else{
-                JOptionPane.showMessageDialog(null,"Contraseña invalida");
-                
-                
+
+        Connection con = null;
+
+        try
+        {
+            con = Conexion.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM empleados WHERE cedula = ?");
+            ps.setString(1, jTextField1.getText());
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next())
+            {
+
+                if (jPasswordField1.getText().equals(rs.getString("contrasena")))
+                {
+
+                    JOptionPane.showMessageDialog(null, "Entrando al sistema");
+                    Menu menu = new Menu();
+                    menu.setVisible(true);
+                    this.dispose();
+
+                } else
+                {
+
+                    JOptionPane.showMessageDialog(null, "Contraseña Incorrecta");
+
+                }
+
+            } else
+            {
+
+                JOptionPane.showMessageDialog(null, "Cedula no registrada como empleado");
+
             }
+
+            con.close();
+
+        } catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
         }
-          
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -168,20 +192,27 @@ public class Login extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>

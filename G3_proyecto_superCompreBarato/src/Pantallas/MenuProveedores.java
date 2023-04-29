@@ -18,7 +18,7 @@ public class MenuProveedores extends javax.swing.JFrame {
      * Creates new form pantallaEmpleados
      */
     public MenuProveedores() {
-        
+
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -132,56 +132,83 @@ public class MenuProveedores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMostrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarClienteActionPerformed
-        
+
         Connection con = null;
-        
+
         try
         {
-            
+
             con = Conexion.getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM proveedor WHERE nombre = ?");
             ps.setString(1, JOptionPane.showInputDialog("Inserte el nombre del proveedor que desea buscar:"));
             ResultSet rs = ps.executeQuery();
-            
+
             if (rs.next())
             {
-                
+
                 JOptionPane.showMessageDialog(null, rs.getString("nombre") + " es proveedor del supermercado");
-            
+
+            } else
+            {
+
+                JOptionPane.showMessageDialog(null, "No se encontro ningun proveedor con ese nombre");
+
+            }
+
+            con.close();
+
+        } catch (Exception e)
+        {
+
+            JOptionPane.showMessageDialog(null, e);
+
+        }
+
+    }//GEN-LAST:event_btnMostrarClienteActionPerformed
+
+    private void btnModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarClienteActionPerformed
+
+        String nombre = JOptionPane.showInputDialog("Digite el nombre del proveedor que desea modificar: ");
+
+        Connection con = null;
+
+        try
+        {
+            con = Conexion.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM proveedor WHERE nombre = ?");
+            ps.setString(1, nombre);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next())
+            {
+
+                ModificarProveedor modificarProveedor = new ModificarProveedor();
+                modificarProveedor.llenarTxt(nombre);
+                modificarProveedor.setVisible(true);
+                this.dispose();
+
             } else
             {
             
-                JOptionPane.showMessageDialog(null, "No se encontro ningun proveedor con ese nombre");
+                JOptionPane.showMessageDialog(null, "Proveedor no registrado");
             
             }
             
             con.close();
-            
+
         } catch (Exception e)
         {
-            
             JOptionPane.showMessageDialog(null, e);
-            
         }
-        
-    }//GEN-LAST:event_btnMostrarClienteActionPerformed
 
-    private void btnModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarClienteActionPerformed
-        
-        String nombre = JOptionPane.showInputDialog("Digite el nombre del proveedor que desea modificar: ");
-        ModificarProveedor modificarProveedor = new ModificarProveedor();
-        modificarProveedor.llenarTxt(nombre);
-        modificarProveedor.setVisible(true);
-        this.dispose();
-        
     }//GEN-LAST:event_btnModificarClienteActionPerformed
 
     private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
-        
+
         AgregarProveedor agregarProveedor = new AgregarProveedor();
         agregarProveedor.setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -199,20 +226,27 @@ public class MenuProveedores extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(MenuProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(MenuProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(MenuProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(MenuProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
