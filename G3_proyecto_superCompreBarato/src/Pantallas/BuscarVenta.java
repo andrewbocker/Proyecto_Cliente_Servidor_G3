@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Pantallas;
-import SuperCompreBarato.Conexion2;
+import SuperCompreBarato.Conexion;
 import java.sql.*;
 import javax.swing.JOptionPane;
 /**
@@ -27,7 +27,7 @@ public class BuscarVenta extends javax.swing.JFrame {
         txtMetodoPago.setText(null);
         txtIdCliente.setText(null);
         txtFechaVenta.setText(null);
-        txtFechaVenta.setText(null);
+        txtProductosAdquiridos.setText(null);
     }
     
     /**
@@ -218,7 +218,7 @@ public class BuscarVenta extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         Connection con = null;
         try{
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM venta WHERE numeroVenta = ?");
             ps.setString(1,txtNumeroVenta.getText());
             ResultSet rs = ps.executeQuery();
@@ -244,7 +244,7 @@ public class BuscarVenta extends javax.swing.JFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         Connection con = null;
         try{
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             PreparedStatement ps = con.prepareStatement("UPDATE venta SET numeroVenta = ?, monto = ?, "
                 + "productos = ?, metodoPago=?, idCliente =?,"
                 + "idEmpleado=?, fechaVenta = ? WHERE numeroVenta = ?");
@@ -273,7 +273,7 @@ public class BuscarVenta extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         Connection con = null;
         try{
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             PreparedStatement ps = con.prepareStatement("DELETE FROM venta WHERE numeroVenta =?");
             ps.setString(1, txtNumeroVenta.getText());
             if(ps.executeUpdate()>0){
@@ -281,8 +281,8 @@ public class BuscarVenta extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(null, "Venta no eliminada");
             }
-            MenuProductos menuProductos = new MenuProductos();
-            menuProductos.setVisible(true);
+            MenuVentas menuVentas = new MenuVentas();
+            menuVentas.setVisible(true);
             con.close();
             limpiaTxt();
 

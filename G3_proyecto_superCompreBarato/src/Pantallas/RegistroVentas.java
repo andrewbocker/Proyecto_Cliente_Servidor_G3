@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Pantallas;
-import SuperCompreBarato.Conexion2;
+import SuperCompreBarato.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -129,7 +129,7 @@ public class RegistroVentas extends javax.swing.JFrame {
         String sql = "SELECT * FROM venta";
         try
         {
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             DefaultTableModel model = (DefaultTableModel) jTableRegistroVentas.getModel();

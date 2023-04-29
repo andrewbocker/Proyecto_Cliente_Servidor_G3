@@ -53,6 +53,7 @@ public class Tienda extends javax.swing.JFrame {
         txtCantidadProducto.setText(null);
         txtDescripcion.setText(null);
         txtCodigoProducto.setText(null);
+        txtFechaVenta.setText(null);
     }
     
     // Metodo para limpiar jtable de productos seleccionados
@@ -90,7 +91,7 @@ public class Tienda extends javax.swing.JFrame {
     public void actualizarDB(String id, String cantidad){
         Connection con = null;
         try{
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             String sql = "UPDATE productos SET cantidadProducto ="+ cantidad + "WHERE codigo ="+ id;
             PreparedStatement ps = con.prepareStatement(sql);
             ps.executeQuery();
@@ -440,11 +441,11 @@ public class Tienda extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlNombreCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel17)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel2)
                                 .addComponent(txtCedCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel9)
-                                .addComponent(jLabel17)
                                 .addComponent(jlTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnInfoCliente)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -519,10 +520,12 @@ public class Tienda extends javax.swing.JFrame {
     private void btnFinalizarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarVentaActionPerformed
         
          Connection con = null;
-        
+         // Determinar nombre de los productos comprados y ensenar en pantalla
+            nombresProductosComprados = nombreProductosComprados();
+            txtProductosAdquiridos.setText(nombresProductosComprados);
 
         try {
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             PreparedStatement ps = con.prepareStatement("INSERT INTO venta (monto,productos,metodoPago,idCliente,idEmpleado,fechaVenta) VALUES (?,?,?,?,?,?)");
             
             ps.setString(1, txtMontoFacturado.getText());
@@ -545,6 +548,8 @@ public class Tienda extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Error al agregar la venta");
 
             }
+            
+            
 
             con.close();
             MenuVentas menuVentas = new MenuVentas();
@@ -565,7 +570,7 @@ public class Tienda extends javax.swing.JFrame {
         try
         {
             DefaultTableModel model = (DefaultTableModel) jtCatalogoProductos.getModel();
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             
@@ -607,9 +612,7 @@ public class Tienda extends javax.swing.JFrame {
         
         
         
-        // Determinar nombre de los productos comprados y ensenar en pantalla
-        nombresProductosComprados = nombreProductosComprados();
-        txtProductosAdquiridos.setText(nombresProductosComprados);
+        
         
         
         
@@ -678,7 +681,7 @@ public class Tienda extends javax.swing.JFrame {
     private void btnInfoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoEmpleadoActionPerformed
         Connection con = null;
         try {
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM empleados "
                     + "WHERE cedula=?");
             ps.setString(1, txtCedEmpleado.getText());

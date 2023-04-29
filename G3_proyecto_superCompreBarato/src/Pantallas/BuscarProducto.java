@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Pantallas;
-import SuperCompreBarato.Conexion2;
+import SuperCompreBarato.Conexion;
 import java.sql.*;
 import javax.swing.JOptionPane;
 /**
@@ -270,7 +270,7 @@ public class BuscarProducto extends javax.swing.JFrame {
         try
         {
 
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             PreparedStatement ps = con.prepareStatement("INSERT INTO proveedor (nombre) VALUES (?)");
             ps.setString(1, txtNombre.getText());
 
@@ -310,7 +310,7 @@ public class BuscarProducto extends javax.swing.JFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         Connection con = null;
         try{
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             PreparedStatement ps = con.prepareStatement("UPDATE productos SET codigo = ?, "
                     + "nombre = ?, precio=?, cantidadProducto =?,"
                     + "descripcion=? WHERE codigo=?");
@@ -344,7 +344,7 @@ public class BuscarProducto extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         Connection con = null;
         try{
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM productos WHERE codigo = ?");
             ps.setString(1,txtCodigoProducto.getText());
             ResultSet rs = ps.executeQuery();
@@ -369,7 +369,7 @@ public class BuscarProducto extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         Connection con = null;
         try{
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             PreparedStatement ps = con.prepareStatement("DELETE FROM productos WHERE codigo =?");
             ps.setString(1, txtCodigoProducto.getText());
          if(ps.executeUpdate()>0){

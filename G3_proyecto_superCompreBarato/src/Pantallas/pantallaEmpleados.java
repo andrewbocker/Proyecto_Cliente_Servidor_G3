@@ -1,7 +1,7 @@
 package Pantallas;
 
 //imports
-import SuperCompreBarato.Conexion2;
+import SuperCompreBarato.Conexion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -360,7 +360,7 @@ public class PantallaEmpleados extends javax.swing.JFrame {
         //AGREGAR
         Connection con = null;
         try {
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             PreparedStatement ps = con.prepareStatement("INSERT INTO empleados (cedula,nombre,apellido1,apellido2,edad,genero, fechaNacimiento, telefono, lugarresidencia ,mail , puesto,contrasena) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
 
             ps.setString(1, txtCedula.getText());
@@ -397,7 +397,7 @@ public class PantallaEmpleados extends javax.swing.JFrame {
         // MODIFICAR
          Connection con =null;
         try {
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             PreparedStatement ps=con.prepareStatement("UPDATE empleados SET cedula = ? ,nombre = ? "
                     + ",apellido1=?,apellido2=?, edad=? , genero=?, fechaNacimiento=?,"
                     + "telefono=?, lugarresidencia=? ,mail=? , "
@@ -437,7 +437,7 @@ public class PantallaEmpleados extends javax.swing.JFrame {
         // BUSCAR
         Connection con = null;
         try {
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM empleados "
                     + "WHERE cedula=?");
             ps.setString(1, txtCedula.getText());
@@ -472,7 +472,7 @@ public class PantallaEmpleados extends javax.swing.JFrame {
         // ELIMINAR
           Connection con = null;
         try {
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             //elimina el dato con el que coincida la cedula
             PreparedStatement ps = con.prepareStatement("DELETE FROM empleados "
                     + "WHERE cedula=?");

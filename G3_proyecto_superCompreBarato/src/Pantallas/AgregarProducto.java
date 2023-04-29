@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Pantallas;
-import SuperCompreBarato.Conexion2;
+import SuperCompreBarato.Conexion;
 import java.sql.*;
 import javax.swing.JOptionPane;
 /**
@@ -254,7 +254,7 @@ public class AgregarProducto extends javax.swing.JFrame {
         try
         {
 
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             PreparedStatement ps = con.prepareStatement("INSERT INTO proveedor (nombre) VALUES (?)");
             ps.setString(1, txtNombre.getText());
 
@@ -306,7 +306,7 @@ public class AgregarProducto extends javax.swing.JFrame {
 
         try
         {
-            con = Conexion2.getConnection();
+            con = Conexion.getConnection();
             PreparedStatement ps = con.prepareStatement("INSERT INTO productos (codigo,nombre,precio, cantidadProducto, descripcion) VALUES (?,?,?,?,?)");
             ps.setString(1, txtCodigoProducto.getText());
             ps.setString(2, txtNombreProducto.getText());
